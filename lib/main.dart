@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/estilos/bordatexto.dart';
 import 'package:pokedex/estilos/botoes.dart';
 import 'package:pokedex/estilos/pokebola.dart';
+import 'package:pokedex/telas/listaPoke.dart';
 
 void main() {
   
@@ -12,14 +13,14 @@ class Home extends StatelessWidget{
 
   @override
   Widget build (BuildContext context){
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainApp(),
-      /*routes: {
-        'tela1': (context) => const Pokedex(),
-        'tela2': (context) => Captura(),
-        'tela3': (context) => Time(), // Inicialmente vazia, pode ser atualizada
-      },*/
+      home: const MainApp(),
+      routes: {
+        'tela1': (context) => lista(),
+        //'tela2': (context) => Captura(),
+        //'tela3': (context) => Time(), // Inicialmente vazia, pode ser atualizada
+      },
     );
   }
 }
@@ -66,7 +67,9 @@ class _MainAppState extends State<MainApp> {
                 children: [
                   const SizedBox(height:350.0),
                   CustomOutlinedButton(
-                    onPressed: () {  }, 
+                    onPressed: () { 
+                      Navigator.pushNamed(context, 'tela1');
+                     }, 
                     text: 'Pokedex',
                   ),
                   const SizedBox(height:25.0),
