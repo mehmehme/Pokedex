@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/estilos/bordatexto.dart';
 import 'package:pokedex/estilos/botoes.dart';
 import 'package:pokedex/estilos/pokebola.dart';
+import 'package:pokedex/repositorio/pokeImpl.dart';
 import 'package:pokedex/telas/listaPoke.dart';
+import 'package:provider/provider.dart';
 
+// 'http://192.168.0.23:3000/pokemon'
 void main() {
   
   runApp(const Home());
@@ -13,14 +16,23 @@ class Home extends StatelessWidget{
 
   @override
   Widget build (BuildContext context){
-    return MaterialApp(
+    return MultiProvider(
+      providers:[
+         Provider<PokemonRepositoryImpl>(create: (_) => PokemonRepositoryImpl()),
+
+         Provider<PokemonNetwork>(create: (_) => PokemonNetwork()),
+         
+         Provider<PokemonDao>(create: (_) => PokemonDao()),
+      ],
+      child: MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const MainApp(),
       routes: {
-        'tela1': (context) => lista(),
+        'tela1': (context) => Lista(),
         //'tela2': (context) => Captura(),
         //'tela3': (context) => Time(), // Inicialmente vazia, pode ser atualizada
       },
+    ),
     );
   }
 }

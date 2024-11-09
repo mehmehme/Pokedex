@@ -6,7 +6,7 @@ class BorderedText extends StatelessWidget {
   final double borderWidth;
   final Color borderColor;
 
-  BorderedText({
+  const BorderedText({super.key, 
     required this.text,
     this.textStyle = const TextStyle(fontSize: 30, color: Colors.white),
     this.borderWidth = 2.0,
