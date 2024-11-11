@@ -7,7 +7,7 @@ class PokemonNetwork {
   final String imgUrl = 'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master';
 
    Future<List<Pokemon>> fetchPokemons({required int page, required int limit}) async {
-    final response = await http.get(Uri.parse('$apiUrl/pokedex.json'));
+    final response = await http.get(Uri.parse('$apiUrl'));
 
   //final response = await http.get(Uri.parse('$apiUrl/pokedex.json'));
 
@@ -34,7 +34,7 @@ class PokemonNetwork {
 
   Pokemon _pokemonFromJson(Map<String, dynamic> json) {
     return Pokemon(
-      id: json['id'],
+      id: int.tryParse(json['id'].toString()) ?? -1,
       name: json['name']['english'],
       types: List<String>.from(json['type']),
       baseStats: Map<String, int>.from(json['base']),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/banco/pokemon.dart';
+import 'package:pokedex/telas/descricao/descPoke.dart';
 
 class PokemonTile extends StatelessWidget {
   final Pokemon pokemon;
@@ -42,7 +43,16 @@ class PokemonTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Descricao(pokemon: pokemon),
+          ),
+        );
+      },
+      child: Container(
       decoration: BoxDecoration(
         color: _getBackgroundColor(pokemon.types),  // Fundo baseado no tipo
         borderRadius: BorderRadius.circular(12.0),
@@ -86,6 +96,7 @@ class PokemonTile extends StatelessWidget {
           ),
         ],
       ),
+    ),
     );
   }
 }

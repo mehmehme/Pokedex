@@ -30,7 +30,7 @@ class Home extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       home: const MainApp(),
       routes: {
-        'tela1': (context) => Lista(),
+        'tela1': (context) => const Lista(),
         //'tela2': (context) => Captura(),
         //'tela3': (context) => Time(), // Inicialmente vazia, pode ser atualizada
       },
@@ -61,17 +61,17 @@ class _MainAppState extends State<MainApp> {
               alignment: Alignment.center,
             ),
             const Fundopoke(),
-            Padding(
-              padding: const EdgeInsets.only(top: 220.0, left: 30.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 220.0, left: 30.0),
               child: BorderedText(
                 text: "Pokedex",
-                textStyle: const TextStyle(
+                textStyle: TextStyle(
                   color: Color.fromARGB(255, 255, 255, 255),
                   fontSize: 80.0,
                   fontWeight: FontWeight.bold,
                 ),
                 borderWidth: 16.0, // Espessura da borda
-                borderColor: const Color.fromARGB(255, 148, 46, 32),
+                borderColor: Color.fromARGB(255, 148, 46, 32),
               ),
             ),
             const SizedBox(height:55.0),

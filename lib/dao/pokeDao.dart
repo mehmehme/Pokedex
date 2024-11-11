@@ -33,7 +33,7 @@ class PokemonDao {
 
   Pokemon _pokemonFromJson(Map<String, dynamic> json) {
     return Pokemon(
-      id: json['id'],
+      id: int.tryParse(json['id'].toString()) ?? -1,
       name: json['name'],
       types: List<String>.from(json['types']),
       baseStats: Map<String, int>.from(json['baseStats']),

@@ -54,6 +54,7 @@ class _ListaState extends State<Lista> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 181, 209, 219),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 223, 157, 15),
         title: const Center(
@@ -67,27 +68,30 @@ class _ListaState extends State<Lista> {
           ),
         ),
       ),
-      body: _pokemons.isEmpty
-          ? const Center(child: CircularProgressIndicator())  // Exibe carregamento até a primeira carga
-          : GridView.builder(
-              controller: _scrollController,  // Controller para o scroll
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3, // Número de colunas
-                childAspectRatio: 0.75, // Proporção largura/altura dos itens
-                crossAxisSpacing: 8.0,
-                mainAxisSpacing: 8.0,
+      body: Padding(
+        padding: const EdgeInsets.only(top:8.0,left: 16.0, right: 16.0),
+        child: _pokemons.isEmpty
+            ? const Center(child: CircularProgressIndicator())  // Exibe carregamento até a primeira carga
+            : GridView.builder(
+                controller: _scrollController,  // Controller para o scroll
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3, // Número de colunas
+                  childAspectRatio: 0.75, // Proporção largura/altura dos itens
+                  crossAxisSpacing: 8.0,
+                  mainAxisSpacing: 8.0,
+                ),
+                itemCount: _pokemons.length + 1,  // Adiciona 1 para o loader de mais Pokémons
+                itemBuilder: (context, index) {
+                  if (index == _pokemons.length) {
+                    // Se for o último item, mostra um indicador de carregamento
+                    return const Center(child: CircularProgressIndicator());
+                  } else {
+                    final pokemon = _pokemons[index];
+                    return PokemonTile(pokemon: pokemon);
+                  }
+                },
               ),
-              itemCount: _pokemons.length + 1,  // Adiciona 1 para o loader de mais Pokémons
-              itemBuilder: (context, index) {
-                if (index == _pokemons.length) {
-                  // Se for o último item, mostra um indicador de carregamento
-                  return const Center(child: CircularProgressIndicator());
-                } else {
-                  final pokemon = _pokemons[index];
-                  return PokemonTile(pokemon: pokemon);
-                }
-              },
-            ),
+      ),
       );
   }
 }
