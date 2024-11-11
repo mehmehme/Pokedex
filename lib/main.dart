@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/dao/pokeDao.dart';
 import 'package:pokedex/estilos/bordatexto.dart';
 import 'package:pokedex/estilos/botoes.dart';
 import 'package:pokedex/estilos/pokebola.dart';
+import 'package:pokedex/network/pokeNet.dart';
 import 'package:pokedex/repositorio/pokeImpl.dart';
 import 'package:pokedex/telas/listaPoke.dart';
 import 'package:provider/provider.dart';
