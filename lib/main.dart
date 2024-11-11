@@ -5,7 +5,9 @@ import 'package:pokedex/estilos/botoes.dart';
 import 'package:pokedex/estilos/pokebola.dart';
 import 'package:pokedex/network/pokeNet.dart';
 import 'package:pokedex/repositorio/pokeImpl.dart';
+import 'package:pokedex/telas/capturar.dart';
 import 'package:pokedex/telas/listaPoke.dart';
+import 'package:pokedex/telas/time.dart';
 import 'package:provider/provider.dart';
 
 // 'http://192.168.0.23:3000/pokemon'
@@ -31,8 +33,8 @@ class Home extends StatelessWidget{
       home: const MainApp(),
       routes: {
         'tela1': (context) => const Lista(),
-        //'tela2': (context) => Captura(),
-        //'tela3': (context) => Time(), // Inicialmente vazia, pode ser atualizada
+        'tela2': (context) => CapturarScreen(),
+        'tela3': (context) => TimeScreen(),
       },
     ),
     );
@@ -88,12 +90,16 @@ class _MainAppState extends State<MainApp> {
                   ),
                   const SizedBox(height:25.0),
                   CustomOutlinedButton(
-                    onPressed: () {  }, 
+                    onPressed: () { 
+                      Navigator.pushNamed(context, 'tela2');
+                     }, 
                     text: 'Capturar',
                   ),
                   const SizedBox(height:25.0),
                   CustomOutlinedButton(
-                    onPressed: () {  }, 
+                    onPressed: () {
+                      Navigator.pushNamed(context, 'tela3');
+                     }, 
                     text: 'Time',
                   ),
                 ],

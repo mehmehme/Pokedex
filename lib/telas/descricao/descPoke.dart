@@ -30,8 +30,17 @@ class Descricao extends StatelessWidget {
                 // Thumbnail em um círculo centralizado
                 CircleAvatar(
                   radius: 80,
-                  backgroundImage: NetworkImage(pokemon.spriteUrl),
+                  backgroundImage: 
+                  NetworkImage(
+                    pokemon.thumbnailUrl,
+                    scale: 50.0,
+                    ),
                   backgroundColor: const Color.fromARGB(255, 102, 28, 28),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  pokemon.types.join(', '),
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
                 const SizedBox(height: 20),
                 // Mostra os dados base do Pokémon em barras de progresso
@@ -47,7 +56,7 @@ class Descricao extends StatelessWidget {
                           children: [
                             Text(
                               statName,
-                              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
                             ),
                             const SizedBox(height: 6),
                             LinearProgressIndicator(
